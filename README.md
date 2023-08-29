@@ -40,6 +40,15 @@ Rotates the camera head of the Picar-X to the specified angle.
 ```
 Tilts the camera head of the Picar-X to the specified angle.
 
+```
+{
+    "operation" : "say",
+    "text : "Hello World!"
+}
+```
+
+Uses the text-to-speach feature to vocalize the provided text.
+
 An array of above listed commands must be sent to the "command" topic of the MQTT broker to control the Picar-X.
 
 In the other direction, the Picar-X produces events with the current state of it's sensors (ultrasonic andd grayscale):
