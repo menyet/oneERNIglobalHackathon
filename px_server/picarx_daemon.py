@@ -4,6 +4,7 @@ from robot_hat import TTS
 import time
 import paho.mqtt.client as mqtt
 import json
+from threading import Lock
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -16,28 +17,30 @@ def on_connect(client, userdata, flags, rc):
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
     message_text = str(msg.payload.decode('utf-8'));
-    print(msg.topic+" "+ message_text)
+    print( msg.topic + " " + message_text)
     commands = json.loads( msg.payload.decode('utf-8'))
 
-    for command in commands:
-        operation = command['operation']
+    with px_lock:
+        for command in commands:
+            operation = command['operation']
 
-        if  operation == 'set_speed':
-            cmd_set_speed( command)
-        elif operation == 'stop':
-            cmd_stop( command)
-        elif operation == 'set_direction':
-            cmd_set_direction( command)
-        elif operation == 'set_head_rotate':
-            cmd_set_head_rotate( command)
-        elif operation == 'set_head_tilt':
-            cmd_set_head_tilt( command)
-        elif operation == 'say':
-            cmd_say( command)
-        else:
-            print('Unknown command')
+            if  operation == 'set_speed':
+                cmd_set_speed( command)
+            elif operation == 'stop':
+                cmd_stop( command)
+            elif operation == 'set_direction':
+                cmd_set_direction( command)
+            elif operation == 'set_head_rotate':
+                cmd_set_head_rotate( command)
+            elif operation == 'set_head_tilt':
+                cmd_set_head_tilt( command)
+            elif operation == 'say':
+                cmd_say( command)
+            else:
+                print('Unknown command')
 
 px = Picarx()
+px_lock = Lock()
 tts_robot = TTS()
 Vilib.camera_start(vflip=False,hflip=False)
 Vilib.display(local=False,web=True)
@@ -96,9 +99,10 @@ client2 = mqtt.Client()
 client2.connect("localhost", 1883, 60)
 
 while True:
-    distance = round(px.ultrasonic.read(), 2)
-    grayscale = px.get_grayscale_data()
-    px.get_
+    with px_lock:
+        distance = round( px.ultrasonic.read(), 2)
+        grayscale = px.get_grayscale_data()
+
     event = {
         "distance" : distance,
         "grayscale" : grayscale
