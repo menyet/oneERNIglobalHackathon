@@ -5,49 +5,50 @@ Following commands bundled into an array may be sent to the Picar-X:
 
 ## Supported operations
 
-{ 
+```
+{
     "operation" : "set_speed",
     "speed" : 5
 }
-
+```
 This sets the speed of the motor. Negative numbers move the Picar-X backwards, 0 to stop the motor.
-
+```
 { 
     "operation" : "stop"
 }
-
+```
 Stops the Picar-X.
-
+```
 { 
     "operation" : "set_direction",
     "angle" : 5
 }
-
+```
 This steers the Picar-X into the given direction.
-
+```
 { 
     "operation" : "set_head_rotate",
     "angle" : 5
 }
-
+```
 Rotates the camera head of the Picar-X to the specified angle.
-
+```
 { 
     "operation" : "set_head_tilt",
     "angle" : 5
 }
-
+```
 Tilts the camera head of the Picar-X to the specified angle.
 
 An array of above listed commands must be sent to the "command" topic of the MQTT broker to control the Picar-X.
 
 In the other direction, the Picar-X produces events with the current state of it's sensors (ultrasonic andd grayscale):
-
+```
 {
     "distance" : 10,
     "grayscale" : [ 1, 2, 3]
 }
-
+```
 Those events may be consumed by connecting to the "state" topic on the MQTT Broker.
 
 ## Setup the Raspberry Pi 4B
@@ -123,6 +124,9 @@ cd oneERNIglobalHackathon/px_server
 sudo python3 picarx_daemon.py
 ```
 
+## Access the camera
+The video stream is accessible through http://<raspi-ip>:9000/mjpg
+
 ## Run the web user interface
 On a client machine, clone the Git repository:
 
@@ -130,6 +134,6 @@ On a client machine, clone the Git repository:
 git clone https://github.com/dani72/oneERNIglobalHackathon.git
 ```
 
-Open the oneERNIglobalHackathon project with e.g. Visual Studio Code and replace the IP-Adresses of my raspberry with the IP address of your raspberry in your LAN (both devices must be in the same network) in the px_client/picarx.html file. Use e.g. the "Liver Server" extension to start up a local web server. A browser opens and displays the UI. Use the developer tools console to track the messages.
+Open the oneERNIglobalHackathon project with e.g. Visual Studio Code and replace the IP-Adresses of my raspberry with the IP address of your raspberry in your LAN (both devices must be in the same network) in the px_client/picarx.html file. Use e.g. the "Live Server" extension to start up a local web server. A browser opens and displays the UI. Use the developer tools console to track the messages.
 
 Have fun!!!!
