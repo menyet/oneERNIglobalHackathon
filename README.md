@@ -51,7 +51,7 @@ Uses the text-to-speach feature to vocalize the provided text.
 
 An array of above listed commands must be sent to the "command" topic of the MQTT broker to control the Picar-X.
 
-In the other direction, the Picar-X produces events with the current state of it's sensors (ultrasonic andd grayscale):
+In the other direction, the Picar-X produces events with the current state of it's sensors (ultrasonic and grayscale):
 ```
 {
     "distance" : 10,
