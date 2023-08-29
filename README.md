@@ -134,7 +134,7 @@ sudo python3 picarx_daemon.py
 ```
 
 ## Access the camera
-The video stream is accessible through http://<raspi-ip>:9000/mjpg
+The video stream is accessible through http://&lt;raspi-ip&gt;:9000/mjpg
 
 ## Run the web user interface
 On a client machine, clone the Git repository:
