@@ -125,6 +125,11 @@ Restart mosquitto:
 sudo /etc/init.d/mosquitto start
 ```
 
+## Install the python client library for MQTT
+```
+sudo pip3 install paho-mqtt
+```
+
 ## Run the Picar-X Daemon
 ```
 cd
