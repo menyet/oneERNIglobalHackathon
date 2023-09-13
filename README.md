@@ -66,6 +66,11 @@ Those events may be consumed by connecting to the "state" topic on the MQTT Brok
 - Follow the instructions here https://docs.sunfounder.com/projects/picar-x/en/latest/python/python_start/installing_the_os.html to write the Raspberry Pi OS Lite (Legacy) onto the SD card (use the Raspberry Pi OS (Legacy) if you insist to use a Desktop :smirk:)
 - Insert the SD-Card with the OS image into your Raspberry and start it. The Raspberry Pi 4B boots up and connects to your WLAN (with the credentials provided when the OS image was written)
 - Find the IP-Address of your Raspberry
+Connect a USB-Keyboard and an HDMI Monitor to the Rasberry Pi and login with the credentials provided when writing the image to the SD card
+```
+ifconfig -a
+```
+Will display all network interfaces with the IP address assigned. Be aware, if there is no address stickiness defined, the IP address of the Raspberry could change after restarting the SBC
 - Connect to your Raspberry via SSH and the user credentials defined when writing the OS image to the SD card
 
 ### Update the OS
