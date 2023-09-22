@@ -83,7 +83,7 @@ Will display all network interfaces with the IP address assigned. Be aware, if t
 ### Install the Picar-X HAT python packages
 ```
 cd
-git clone https://github.com/sunfounder/robot-hat.git
+git clone -b v2.0 https://github.com/sunfounder/robot-hat.git
 cd robot-hat
 sudo python3 setup.py install
 ```
