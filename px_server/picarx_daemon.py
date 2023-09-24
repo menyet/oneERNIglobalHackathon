@@ -61,13 +61,13 @@ def cmd_set_head_tilt( cmd):
     angle = cmd['angle']
 
     if( -45 < angle & angle < 45):
-        px.set_camera_servo2_angle( angle)
+        px.set_camera_tilt_angle( angle)
 
 def cmd_set_head_rotate( cmd):
     angle = cmd['angle']
 
     if( -45 < angle & angle < 45):
-        px.set_camera_servo1_angle( angle)
+        px.set_cam_pan_angle( angle)
 
 def cmd_set_speed( cmd):
     speed = cmd['speed']
